@@ -41,10 +41,9 @@ public class RecipeControllerTest {
         Recipe recipe = new Recipe();
         recipe.setId(1L);
 
-
         when(recipeService.findById(anyLong())).thenReturn(recipe);
 
-        mockMvc.perform(get("/recipe/show/1"))
+        mockMvc.perform(get("/recipe/1/show"))
                 .andExpect(status().isOk())
                 .andExpect(view().name("recipe/show"))
                 .andExpect(model().attributeExists("recipe"));
@@ -88,7 +87,7 @@ public class RecipeControllerTest {
 
     @Test
     public void testDeleteAction() throws Exception {
-        mockMvc.perform(get("recipe/1/delete"))
+        mockMvc.perform(get("/recipe/1/delete"))
                 .andExpect(status().is3xxRedirection())
                 .andExpect(view().name("redirect:/"));
 
