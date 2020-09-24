@@ -43,7 +43,8 @@ public class IngredientServiceImplTest {
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
 
-        ingredientService = new IngredientServiceImpl(ingredientToIngredientCommand, ingredientCommandToIngredient, recipeRepository, unitOfMeasureRepository);
+        ingredientService = new IngredientServiceImpl(ingredientToIngredientCommand, ingredientCommandToIngredient,
+                recipeRepository, unitOfMeasureRepository);
     }
 
     @Test
@@ -81,6 +82,7 @@ public class IngredientServiceImplTest {
         verify(recipeRepository, times(1)).findById(anyLong());
     }
 
+
     @Test
     public void testSaveRecipecommand() throws Exception {
         //given
@@ -106,5 +108,4 @@ public class IngredientServiceImplTest {
         verify(recipeRepository, times(1)).save(any(Recipe.class));
 
     }
-
 }
